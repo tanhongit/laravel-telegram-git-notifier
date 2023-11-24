@@ -11,7 +11,7 @@ class ChangeOwnerConfigJson extends Command
      *
      * @var string
      */
-    protected $signature = 'config-json:change-owner {--user= : user}';
+    protected $signature = 'config-json:change-owner {--user= : user}'; // sudo php artisan config-json:change-owner --user=www-data
 
     /**
      * The console command description.
