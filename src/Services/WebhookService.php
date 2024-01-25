@@ -9,10 +9,10 @@ class WebhookService
 {
     protected WebhookAction $webhookAction;
 
-    public function __construct(WebhookAction $webhookAction) {
+    public function __construct(WebhookAction $webhookAction)
+    {
         $this->webhookAction = $webhookAction;
     }
-
 
     /**
      * @throws WebhookException
