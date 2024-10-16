@@ -61,10 +61,10 @@ your real system**. Its purpose is only to clarify the feature's operating model
 erDiagram
     User ||--o{ Bot: owns
     User ||--o{ GitRepository: owns
-    Bot ||--|{ Webhook: creates
     GitRepository ||--o{ Webhook: has
     GitRepository ||--o{ Event: triggers
     Event ||--o{ Webhook: sends_through
+    Bot ||--|{ Webhook: creates
     Webhook ||--|{ Bot: received_by
     Bot ||--o{ Notification: sends
     Notification ||--o{ Recipient: received_by
@@ -165,12 +165,12 @@ flowchart TD
     checkSettings -->|Yes| findTemplate{Find message template}
     checkSettings -->|No| endFlow[End flow]
     findTemplate -->|Exists| setMessage[Set message for notification]
+    sendNotification -->|Failure| log[Log error]
     findTemplate -->|Not Exists| log[Log error]
     setMessage --> checkMessage{Is message empty?}
     checkMessage -->|Yes| endFlow[End flow]
     checkMessage -->|No| sendNotification[Send notification]
     sendNotification -->|Success| endFlow[End flow]
-    sendNotification -->|Failure| log[Log error]
     log --> endFlow
 ```
 
